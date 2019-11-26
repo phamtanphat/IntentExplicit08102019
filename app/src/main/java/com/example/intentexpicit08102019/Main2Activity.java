@@ -17,9 +17,12 @@ public class Main2Activity extends AppCompatActivity {
 //        String chuoi = intent.getStringExtra(Appconst.KEY_STRING);
 //        Log.d("BBB",chuoi);
 //        2 : Nhân dạng int
+//        Intent intent = getIntent();
+//        int number = intent.getIntExtra(Appconst.KEY_INT,Integer.MIN_VALUE);
+//        Log.d("BBB",number + "");
+//        3 : Nhận dang object
         Intent intent = getIntent();
-        Bundle number = intent.getBundleExtra(Appconst.KEY_INT);
-        Log.d("BBB",number.getString(Appconst.KEY_STRING) + "");
-        Log.d("BBB",number.getInt(Appconst.KEY_INT) + "");
+        Sinhvien sinhvien = (Sinhvien) intent.getSerializableExtra(Appconst.KEY_OBJECT);
+        Log.d("BBB",sinhvien.name);
     }
 }

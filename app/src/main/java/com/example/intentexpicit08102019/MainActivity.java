@@ -7,12 +7,12 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnIntentString, btnIntentInt;
-
+    Button btnIntentString, btnIntentInt, btnIntentObject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnIntentString = findViewById(R.id.buttonIntentString);
         btnIntentInt = findViewById(R.id.buttonIntentInt);
+        btnIntentObject = findViewById(R.id.buttonIntentObject);
 
         btnIntentString.setOnClickListener(v -> {
             // statement
@@ -29,11 +30,16 @@ public class MainActivity extends AppCompatActivity {
 //            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
 //            intent.putExtra(Appconst.KEY_INT, 123456);
 //            startActivity(intent);
-            Bundle bundle = new Bundle();
-            bundle.putString(Appconst.KEY_STRING, "Hello main 2");
-            bundle.putInt(Appconst.KEY_INT, 123456);
-            sendIntent(Appconst.KEY_INT, bundle);
+            sendIntent(Appconst.KEY_INT, 123456);
         });
+        btnIntentObject.setOnClickListener(v -> {
+            Sinhvien sinhvien = new Sinhvien("Nguyen Van A", "20");
+            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+            intent.putExtra(Appconst.KEY_OBJECT,  sinhvien);
+            startActivity(intent);
+        });
+//        -Task : đưa object sang cho generic
+//        -Task : chuyển dạng mảng object
     }
     private <T> void sendIntent(String key , T value){
         Intent intent = new Intent(MainActivity.this, Main2Activity.class);
