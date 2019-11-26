@@ -14,7 +14,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         // 1 : Nhận dạng String
         Intent intent = getIntent();
-        String chuoi = intent.getStringExtra("chuoi");
+        String chuoi = intent.getStringExtra(Appconst.KEY_STRING);
         Log.d("BBB",chuoi);
     }
 }

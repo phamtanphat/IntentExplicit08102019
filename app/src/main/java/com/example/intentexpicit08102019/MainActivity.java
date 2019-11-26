@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btnIntentString.setOnClickListener(v -> {
             // statement
             Intent intent = new Intent(MainActivity.this,Main2Activity.class);
-            intent.putExtra("chuoi","Hello main 2");
+            intent.putExtra(Appconst.KEY_STRING,"Hello main 2");
             startActivity(intent);
         });
     }
