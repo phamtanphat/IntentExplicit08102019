@@ -11,5 +11,9 @@
         style="@style/DefaultButton"
         android:text="Intent Send String"
         android:id="@+id/buttonIntentString"/>
-
+    <Button
+        android:layout_below="@id/buttonIntentString"
+        style="@style/DefaultButton"
+        android:text="Intent Send Int"
+        android:id="@+id/buttonIntentInt"/>
 </RelativeLayout>
