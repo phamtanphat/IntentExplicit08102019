@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnIntentString, btnIntentInt, btnIntentObject;
+    Button btnIntentString, btnIntentInt, btnIntentObject,btnIntentParcel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         btnIntentString = findViewById(R.id.buttonIntentString);
         btnIntentInt = findViewById(R.id.buttonIntentInt);
         btnIntentObject = findViewById(R.id.buttonIntentObject);
+        btnIntentParcel = findViewById(R.id.buttonIntentObjectParcelable);
 
         btnIntentString.setOnClickListener(v -> {
             // statement
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
             sendIntent(Appconst.KEY_OBJECT,  sinhvien);
         });
 
+        btnIntentParcel.setOnClickListener(v -> {
+            ArrayList<Sinhvien> sinhviens = new ArrayList<>();
+            sinhviens.add(new Sinhvien("Nguyen Van A", "20"));
+
+            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+            intent.putExtra(Appconst.KEY_OBJECT_PARCEL,  sinhviens);
+            startActivity(intent);
+        });
 //        -Task : đưa object sang cho generic
 //        -Task : chuyển dạng mảng object
     }
@@ -54,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         if (value instanceof Sinhvien){
             intent.putExtra(key ,(Serializable) value);
         }
-
         startActivity(intent);
     }
 

@@ -24,5 +24,6 @@ public class Main2Activity extends AppCompatActivity {
         Intent intent = getIntent();
         Sinhvien sinhvien = (Sinhvien) intent.getSerializableExtra(Appconst.KEY_OBJECT);
         Log.d("BBB",sinhvien.name);
+
     }
 }
