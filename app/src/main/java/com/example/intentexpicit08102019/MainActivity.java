@@ -2,6 +2,8 @@ package com.example.intentexpicit08102019;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
         btnIntentParcel.setOnClickListener(v -> {
             ArrayList<Sinhvien> sinhviens = new ArrayList<>();
             sinhviens.add(new Sinhvien("Nguyen Van A", "20"));
-
-            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-            intent.putExtra(Appconst.KEY_OBJECT_PARCEL,  sinhviens);
-            startActivity(intent);
+//
+//            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+//            intent.putExtra(Appconst.KEY_OBJECT_PARCEL,  sinhviens);
+//            startActivity(intent);
+            sendIntent(Appconst.KEY_OBJECT_PARCEL,  sinhviens);
         });
 //        -Task : đưa object sang cho generic
 //        -Task : chuyển dạng mảng object
@@ -62,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (value instanceof Sinhvien){
             intent.putExtra(key ,(Serializable) value);
+        }
+        if (value instanceof ArrayList<?>){
+            if (value instanceof Object){
+                intent.putExtra(key ,(ArrayList<Sinhvien>) value);
+            }
         }
         startActivity(intent);
     }
