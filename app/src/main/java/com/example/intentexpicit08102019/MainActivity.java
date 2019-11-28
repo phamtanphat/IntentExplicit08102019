@@ -34,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
         });
         btnIntentObject.setOnClickListener(v -> {
             Sinhvien sinhvien = new Sinhvien("Nguyen Van A", "20");
-            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-            intent.putExtra(Appconst.KEY_OBJECT,  sinhvien);
-            startActivity(intent);
+//            Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+//            intent.putExtra(Appconst.KEY_OBJECT,  sinhvien);
+//            startActivity(intent);
+            sendIntent(Appconst.KEY_OBJECT,  sinhvien);
         });
+
 //        -Task : đưa object sang cho generic
 //        -Task : chuyển dạng mảng object
     }
@@ -48,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (value instanceof Integer){
             intent.putExtra(key ,(Integer) value);
+        }
+        if (value instanceof Sinhvien){
+            intent.putExtra(key ,(Serializable) value);
         }
 
         startActivity(intent);
